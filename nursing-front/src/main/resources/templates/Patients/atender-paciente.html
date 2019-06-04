@@ -7,7 +7,7 @@
 </head>
 <body>
 <div class="main-div">
-    <h1>Patient Assist Form - UPDATED</h1>
+    <h1>Patient Assist Form</h1>
     <h3 th:text="${'For ' + newAssist.pacienteAtendido.nombres + ' ' + newAssist.pacienteAtendido.apellidos}"></h3>
     <form action="#" th:action="@{/atender-paciente}" th:object="${newAssist}" method="post">
         <table>
@@ -39,7 +39,8 @@
         <input type="text" th:field="*{lugarRemision}" id="lugarRemision" placeholder="Referred from">
         <br>
 
-        <input type="hidden" th:field="*{pacienteAtendido}"/>
+
+        <input type="hidden" th:field="*{pacienteAtendido.documento}" th:value="${pacienteAAtender.documento}"/>
         <input type="submit" value="Add Assist">
         <input type="reset" value="Clear">
     </form>

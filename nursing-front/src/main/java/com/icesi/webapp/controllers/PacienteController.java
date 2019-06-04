@@ -26,12 +26,13 @@ public class PacienteController {
     }
 
     @GetMapping("/atender-paciente/{documento}")
-    public String atenderPacienteFormulario(@PathVariable("documento") String documento, Model model) throws IOException {
-        AtencionUrgencia atencionUrgencia = new AtencionUrgencia();
+    public String atenderPacienteFormulario(@PathVariable("documento") String documento, Model model) throws IOException{
+        AtencionUrgencia atencionUrgencia =  new AtencionUrgencia();
         atencionUrgencia.setPacienteAtendido(pacienteBD.findByIdPaciente(documento));
         atencionUrgencia.setMedicamentosSuministrados(new ArrayList<>());
+        //System.out.println("ATENCION A REALIZAR: " + atencionUrgencia);
         model.addAttribute("newAssist", atencionUrgencia);
-        model.addAttribute("newAssistPrime", atencionUrgencia);
+        model.addAttribute("pacienteAAtender", pacienteBD.findByIdPaciente(documento));
         return "Patients/atender-paciente";
     }
 }

@@ -13,16 +13,17 @@ import javax.xml.ws.Response;
 @RestController
 public class PacienteRestController {
 
-    @Autowired private PacienteService pacienteService;
+    @Autowired
+    private PacienteService pacienteService;
 
     @GetMapping("/get-patients")
-    public Iterable<Paciente> GetPatients(){
+    public Iterable<Paciente> GetPatients() {
         Iterable<Paciente> pacientes = pacienteService.findAllPacientes();
         return pacientes;
     }
 
     @GetMapping("/get-patient/{documento}")
-    public Paciente GetPatient(@PathVariable("documento") String documento){
+    public Paciente GetPatient(@PathVariable("documento") String documento) {
         Paciente paciente = pacienteService.findByIdPaciente(documento);
         return paciente;
     }

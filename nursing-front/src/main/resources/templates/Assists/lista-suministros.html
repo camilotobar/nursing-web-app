@@ -60,7 +60,8 @@
             </tbody>
         </table>
 
-        <input type="hidden" th:field="*{paciente}"/>
+        <!--input type="hidden" th:field="*{paciente}"/-->
+        <input type="hidden" th:field="*{paciente.documento}" th:value="${patient.documento}"/>
         <input type="submit" value="Add Supply">
         <input type="reset" value="Clear">
     </form>

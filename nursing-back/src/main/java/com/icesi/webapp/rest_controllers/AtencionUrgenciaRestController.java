@@ -5,7 +5,6 @@ import com.icesi.webapp.services.AtencionUrgenciaService;
 import com.icesi.webapp.services.MedicamentoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.time.LocalDate;
 
 @RestController
@@ -16,6 +15,8 @@ public class AtencionUrgenciaRestController {
 
     @PostMapping("/save-assist")
     public String SaveAssist(@RequestBody AtencionUrgencia atencionUrgencia) {
+
+
         System.out.println("Atencion a guardar: " + atencionUrgencia);
         atencionUrgenciaService.saveAtencion(atencionUrgencia);
         return "";

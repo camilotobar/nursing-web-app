@@ -12,22 +12,25 @@ import java.util.ArrayList;
 @Service
 public class PacienteBusinessDelegate {
 
-    @Autowired private RequestModule requestModule;
+    @Autowired
+    private RequestModule requestModule;
 
     public void savePaciente(Paciente paciente) throws IOException {
         String plusPath = "save-patient";
         requestModule.GETRequest(plusPath);
     }
+
     public Paciente findByIdPaciente(String documento) throws IOException {
         String plusPath = "get-patient/" + documento;
         return new Gson().fromJson(requestModule.GETRequest(plusPath), Paciente.class);
     }
+
     public void removePaciente(Paciente paciente) throws IOException {
         String plusPath = "remove-patient";
         requestModule.GETRequest(plusPath);
     }
 
-    public Iterable<Paciente> findAllPacientes() throws IOException{
+    public Iterable<Paciente> findAllPacientes() throws IOException {
         String plusPath = "get-patients";
         return (Iterable<Paciente>) new Gson().fromJson(requestModule.GETRequest(plusPath), ArrayList.class);
     }
