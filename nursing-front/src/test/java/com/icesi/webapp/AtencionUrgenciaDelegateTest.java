@@ -140,11 +140,29 @@ public class AtencionUrgenciaDelegateTest {
         String aUJson = gson.toJson(atencionUrgencia);
         try {
             String expected = "get-assist/" + atencionUrgencia.getId();//get-assist/1564
-            String sent="" + 1564 + "";
+            String sent = "" + 1564 + "";
             when(requestModule.GETRequest(expected)).thenReturn(aUJson);
             assertEquals(expected, "get-assist/1564");
-            AtencionUrgencia atencionUrgencia2 = urgenciaBusinessDelegate.findByIdAtencion(atencionUrgencia.getId() + "");
-            //assertSame(atencionUrgencia, atencionUrgencia2);
+            //AtencionUrgencia atencionUrgencia2 = urgenciaBusinessDelegate.findByIdAtencion(atencionUrgencia.getId() + "");
+            assertTrue(atencionUrgencia.toString().length() == urgenciaBusinessDelegate.findByIdAtencion(atencionUrgencia.getId() + "").toString().length());
+        } catch (IOException e) {
+            e.printStackTrace();
+            fail();
+        }
+    }
+
+    @Test
+    public void testFilterAtencionesByDate() {
+        LocalDate date = LocalDate.now();
+        String path = "get-assists-by-date?date=" + date.getYear() + "-" +
+                date.getMonthValue() + "-" + date.getDayOfMonth();
+        Iterable<AtencionUrgencia> atencionUrgencias = new ArrayList<>();
+
+        Gson gson = new GsonBuilder().setPrettyPrinting().registerTypeAdapter(LocalDate.class, new LocalDateAdapter()).create();
+        String aURet = gson.toJson(atencionUrgencias);
+        try {
+            when(requestModule.GETRequest(path)).thenReturn(aURet);
+            assertTrue(atencionUrgencias.toString().length() == urgenciaBusinessDelegate.filterAtencionesByDate(date).toString().length());
         } catch (IOException e) {
             e.printStackTrace();
             fail();
