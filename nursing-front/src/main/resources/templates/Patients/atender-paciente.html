@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Patient Assist</title>
+    <link href="../static/css/stylesheet.css" th:href="@{/css/stylesheet.css}" rel="stylesheet"/>
+</head>
+<body>
+<div class="main-div">
+    <h1>Patient Assist Form</h1>
+    <h3 th:text="${'For ' + newAssist.pacienteAtendido.nombres + ' ' + newAssist.pacienteAtendido.apellidos}"></h3>
+    <form action="#" th:action="@{/atender-paciente}" th:object="${newAssist}" method="post">
+        <table>
+            <thead>
+            <tr>
+                <th>Assist Description</th>
+                <th>Procedure performed</th>
+                <th>Assist Comments</th>
+                <th>Assist Date</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><input type="text" th:field="*{descripcionAtencion}" id="description" placeholder="Description" required></td>
+                <td><input type="text" th:field="*{procedimientoRealizado}" id="procedure" placeholder="Procedure" required></td>
+                <td><input type="text" th:field="*{observaciones}" id="comments" placeholder="Comments" required></td>
+                <td><input type="date" th:field="*{fecha}" id="fecha" placeholder="01/04/2019" required></td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+
+        <label for="remitido">Referred Patient</label>
+        <input onclick="document.getElementById('lugarRemision').disabled = false" type="radio" id="remitido" th:field="*{remitido}" name="remitido" value="true" checked>
+        <label for="no-remitido">Not referred patient</label>
+        <input onclick="document.getElementById('lugarRemision').disabled = true; document.getElementById('lugarRemision').value = '';" type="radio" id="no-remitido" th:field="*{remitido}" name="remitido" value="false">
+
+        <label for="lugarRemision">Referred From</label>
+        <input type="text" th:field="*{lugarRemision}" id="lugarRemision" placeholder="Referred from">
+        <br>
+
+        <!--input type="hidden" th:field="*{pacienteAtendido}"/-->
+        <input type="hidden" th:field="*{pacienteAtendido.documento}" th:value="${pacienteAAtender.documento}"/>
+        <input type="submit" value="Add Assist">
+        <input type="reset" value="Clear">
+    </form>
+    <br>
+    <p class="DashBack"><a href="/pacientes">Back to Patients</a></p>
+</div>
+</body>
+</html>

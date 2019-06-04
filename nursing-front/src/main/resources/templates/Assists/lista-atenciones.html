@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Assists</title>
+    <link href="../static/css/stylesheet.css" th:href="@{/css/stylesheet.css}" rel="stylesheet" />
+</head>
+<body>
+<div class="main-div">
+    <h1>Assists ⚕</h1>
+    <form action="#" th:action="@{/atenciones}" method="get">
+        <label for="fecha">Filter assists before date</label>
+        <input type="date" id="fecha" name="date" placeholder="01/04/2019" required>
+        <input type="submit" value="Filter">
+    </form>
+    <br>
+    <table>
+        <thead>
+        <tr>
+            <th>Date</th>
+            <th>Patient First Name</th>
+            <th>Patient Last Name</th>
+            <th>Patient Id</th>
+            <th>Description</th>
+            <th>Procedure Performed</th>
+            <th>Assist Comments</th>
+            <th>Referred Patient</th>
+            <th>Referred From</th>
+            <th>Supplies</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="assist : ${assists}">
+            <td class="td-important" th:text="${assist.fecha}"></td>
+            <td class="td-important" th:text="${assist.pacienteAtendido.nombres}"></td>
+            <td class="td-important" th:text="${assist.pacienteAtendido.apellidos}"></td>
+            <td class="td-important" th:text="${assist.pacienteAtendido.documento}"></td>
+            <td th:text="${assist.descripcionAtencion}"></td>
+            <td th:text="${assist.procedimientoRealizado}"></td>
+            <td th:text="${assist.observaciones}"></td>
+            <td th:text="${assist.remitido}"></td>
+            <td th:text="${assist.lugarRemision}"></td>
+            <td><a th:href="@{/suministros/{id}(id=${#numbers.formatDecimal(assist.id, 1, 0)})}">💊</a></i></a></td>
+        </tr>
+        </tbody>
+    </table>
+    <p class="DashBack"><a href="/dashboard">Go to 🏠</a></p>
+</div>
+</body>
+</html>

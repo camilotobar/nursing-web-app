@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css?family=Rubik');
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans');
+
+h1{
+    color: darkslateblue;
+    font-family: 'Rubik', sans-serif;
+}
+
+h2{
+    color: black;
+    font-family: 'Rubik', sans-serif;
+}
+
+h3{
+    color: #52348b;
+    font-family: 'Rubik', sans-serif;
+    font-style: italic;
+}
+
+p{
+    color: dimgray;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+.DashBack{
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+.Logout{
+    font-family: 'Rubik', sans-serif;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+th{
+    background-color: darkslateblue;
+    color: white;
+    font-family: 'Rubik', sans-serif;
+    padding-bottom: 7px;
+    padding-top: 7px;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+td{
+    color: #101820;
+    font-family: 'Nunito Sans', sans-serif;
+    text-align: left;
+    padding-bottom: 7px;
+    padding-top: 7px;
+    padding-right: 5px;
+    padding-left: 5px;
+    border-top: 1px solid #898989;
+}
+
+.td-important{
+    color: #101820;
+    background: antiquewhite;
+    font-family: 'Nunito Sans', sans-serif;
+    text-align: left;
+    padding-bottom: 7px;
+    padding-top: 7px;
+    padding-right: 5px;
+    padding-left: 5px;
+    border-top: 1px solid #898989;
+}
+
+label{
+    color: #52348b;
+    font-family: 'Rubik', sans-serif;
+}
+
+input{
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+option{
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+input[type=submit] {
+    padding:5px 15px;
+    background:darkslateblue;
+    color: white;
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    font-family: 'Rubik', sans-serif;
+}
+
+input[type=reset] {
+    padding:5px 15px;
+    background: orangered;
+    color: white;
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    font-family: 'Rubik', sans-serif;
+}
+
+.main-div{
+    background-color: #dddddd;
+    padding-bottom: 5%;
+    padding-top: 5%;
+    padding-right: 5%;
+    padding-left: 5%;
+}
