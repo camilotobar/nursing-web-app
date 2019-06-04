@@ -15,7 +15,7 @@ public class PacienteRestController {
 
     @Autowired private PacienteService pacienteService;
 
-    @GetMapping("/patients")
+    @GetMapping("/get-patients")
     public Iterable<Paciente> GetPatients(){
         Iterable<Paciente> pacientes = pacienteService.findAllPacientes();
         return pacientes;

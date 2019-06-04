@@ -38,7 +38,7 @@ public class MedicamentoBusinessDelegate {
     }
 
     public Iterable<Medicamento> findAllMedicamentos() throws IOException {
-        String plusPath = "medicines";
+        String plusPath = "get-medicine";
         return (Iterable<Medicamento>) new Gson().fromJson(requestModule.GETRequest(plusPath), ArrayList.class);
     }
 

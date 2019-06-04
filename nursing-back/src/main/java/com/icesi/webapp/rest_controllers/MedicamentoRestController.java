@@ -22,7 +22,7 @@ public class MedicamentoRestController {
         return medicamento;
     }
 
-    @GetMapping("/medicines")
+    @GetMapping("/get-medicine")
     public Iterable<Medicamento> GetMedicines(){
         Iterable<Medicamento> medicamentos = medicamentoService.findAllMedicamentos();
         return medicamentos;
