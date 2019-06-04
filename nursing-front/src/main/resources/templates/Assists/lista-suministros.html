@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Supplies</title>
+    <link href="../static/css/stylesheet.css" th:href="@{/css/stylesheet.css}" rel="stylesheet"/>
+</head>
+<body>
+<div class="main-div">
+    <h1>Supplies 💊</h1>
+    <h3 th:text="${'For ' + assist.pacienteAtendido.nombres + ' ' + assist.pacienteAtendido.apellidos + ' ' + assist.fecha + ' assist'}"></h3>
+    <table>
+        <thead>
+        <tr>
+            <th>Date</th>
+            <th>Quantity</th>
+            <th>Pathology</th>
+            <th>Medicine</th>
+            <th>Medication Way</th>
+            <th>Supply Comments</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="sup : ${supplies}">
+            <td th:text="${sup.fecha}"></td>
+            <td th:text="${sup.cantidad}"></td>
+            <td th:text="${sup.patologia}"></td>
+            <td th:text="${sup.medicamento.nombre}"></td>
+            <td th:text="${sup.medicamento.tipoAdministracion}"></td>
+            <td th:text="${sup.observacion}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <br>
+    <input type="hidden" th:field="*{assist}"/>
+
+    <h2>Add Supply</h2>
+    <form action="#" th:action="@{/suministros/{id}(id=${assist.id})}" th:object="${newSupply}" method="post">
+        <table>
+            <thead>
+            <tr>
+                <th>Date</th>
+                <th>Quantity</th>
+                <th>Pathology</th>
+                <th>Medicine</th>
+                <th>Comments</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><input type="date" th:field="*{fecha}" id="supplyDate" placeholder="01/04/2019" required></td>
+                <td><input type="number" th:field="*{cantidad}" id="description" min="1" value="1" required></td>
+                <td><input type="text" th:field="*{patologia}" id="pathology" placeholder="Pathology" required></td>
+                <td><select th:field="*{medicamento.id}" required>
+                    <option value="0">Select Medicine</option>
+                    <option th:each="med : ${medicinesAvailable}" th:value="${#numbers.formatDecimal(med.id,1,0)}" th:text="${med.nombre}"></option>
+                </select></td>
+                <td><input type="text" th:field="*{observacion}" id="comments" placeholder="Supply Comments" required></td>
+            </tr>
+            </tbody>
+        </table>
+
+        <input type="hidden" th:field="*{paciente}"/>
+        <input type="submit" value="Add Supply">
+        <input type="reset" value="Clear">
+    </form>
+    <br>
+    <p class="DashBack"><a href="/atenciones?date=2999-12-12">Back to Assists</a></p>
+</div>
+</body>
+</html>

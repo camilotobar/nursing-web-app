@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <link href="../static/css/stylesheet.css" th:href="@{/css/stylesheet.css}" rel="stylesheet" />
+</head>
+<body>
+    <div class="main-div">
+        <h1>Nursing dashboard 🏥</h1>
+        <h2 th:text="${'Welcome ' + username + '!'}">Welcome!</h2>
+        <h3>PATIENTS</h3>
+        <p><a href="/pacientes">Patients profile 🧑</a></p>
+        <br>
+
+        <h3>MEDICINES</h3>
+        <p><a href="/medicamentos?date=2000-12-12">Medicines finder 📔</a></p>
+        <p><a href="/entrega-medicamento">Medicines delivery 🧾</a></p>
+        <br>
+
+        <h3>ASSISTS</h3>
+        <p><a href="/atenciones?date=2999-12-12">Assists finder ⚕️</a></p>
+        <br>
+        <p class="Logout"><a href="/logout"><b>LOGOUT ⬅</b>️</a></p>
+    </div>
+</body>
+</html>

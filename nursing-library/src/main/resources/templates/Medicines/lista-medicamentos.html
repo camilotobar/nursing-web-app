@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Medicines</title>
+    <link href="../static/css/stylesheet.css" th:href="@{/css/stylesheet.css}" rel="stylesheet" />
+</head>
+<body>
+<div class="main-div">
+    <h1>Medicines 📔</h1>
+    <form action="#" th:action="@{/medicamentos}" method="get">
+        <label for="fecha">Filter non-expiring by date</label>
+        <input type="date" id="fecha" name="date" placeholder="01/04/2019" required>
+        <input type="submit" value="Filter">
+    </form>
+    <br>
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Generic Name</th>
+            <th>Laboratory</th>
+            <th>Medication Way</th>
+            <th>Indications</th>
+            <th>Quantity in Inventory</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="medicine : ${medicines}">
+            <td th:text="${medicine.nombre}"></td>
+            <td th:text="${medicine.nombreGenerico}"></td>
+            <td th:text="${medicine.laboratorio}"></td>
+            <td th:text="${medicine.tipoAdministracion}"></td>
+            <td th:text="${medicine.indicaciones}"></td>
+            <td th:text="${medicine.inventarioTotal() + ' units'}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <p class="DashBack"><a href="/dashboard">Go to 🏠</a></p>
+</div>
+</body>
+</html>

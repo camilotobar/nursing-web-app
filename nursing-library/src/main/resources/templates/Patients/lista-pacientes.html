@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Patients</title>
+    <link href="../../static/css/stylesheet.css" th:href="@{/css/stylesheet.css}" rel="stylesheet" />
+</head>
+<body>
+    <div class="main-div">
+        <h1>Patients 🧑</h1>
+        <table>
+            <thead>
+            <tr>
+                <th>Document</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Degree Program</th>
+                <th>Faculty</th>
+                <th>Assist</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="patient : ${patients}">
+                <td th:text="${patient.documento}"></td>
+                <td th:text="${patient.nombres}"></td>
+                <td th:text="${patient.apellidos}"></td>
+                <td th:text="${patient.programaAcademico}"></td>
+                <td th:text="${patient.dependenciaAcademica}"></td>
+                <td class="td-important"><a th:href="@{/atender-paciente/{doc}(doc=${patient.documento})}">⚕️</a></i></a></td>
+            </tr>
+            </tbody>
+        </table>
+        <p class="DashBack"><a href="/dashboard">Go to 🏠</a></p>
+    </div>
+</body>
+</html>
