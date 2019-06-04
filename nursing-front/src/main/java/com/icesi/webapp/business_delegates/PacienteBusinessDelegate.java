@@ -1,16 +1,11 @@
 package com.icesi.webapp.business_delegates;
 
-import com.fasterxml.jackson.databind.AnnotationIntrospector;
 import com.google.gson.Gson;
 import com.icesi.webapp.model.Paciente;
-import com.icesi.webapp.repositories.PacienteRepository;
 import com.icesi.webapp.request.RequestModule;
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
-import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
 

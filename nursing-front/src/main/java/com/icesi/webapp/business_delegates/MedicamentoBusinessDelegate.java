@@ -18,9 +18,10 @@ import java.util.List;
 @Service
 public class MedicamentoBusinessDelegate {
 
-    @Autowired private RequestModule requestModule;
+    @Autowired
+    private RequestModule requestModule;
 
-    public void saveMedicamento(Medicamento paciente) throws IOException{
+    public void saveMedicamento(Medicamento paciente) throws IOException {
         String plusPath = "save-patient";
         requestModule.GETRequest(plusPath);
     }
@@ -31,17 +32,17 @@ public class MedicamentoBusinessDelegate {
         return gson.fromJson(requestModule.GETRequest(plusPath), Medicamento.class);
     }
 
-    public void removeMedicamento(Medicamento paciente) throws IOException{
+    public void removeMedicamento(Medicamento paciente) throws IOException {
         String plusPath = "remove-patient";
         requestModule.GETRequest(plusPath);
     }
 
-    public Iterable<Medicamento> findAllMedicamentos() throws IOException{
+    public Iterable<Medicamento> findAllMedicamentos() throws IOException {
         String plusPath = "medicines";
         return (Iterable<Medicamento>) new Gson().fromJson(requestModule.GETRequest(plusPath), ArrayList.class);
     }
 
-    public Iterable<Medicamento> filterMedicamentosWithoutExpiring(LocalDate date) throws IOException{
+    public Iterable<Medicamento> filterMedicamentosWithoutExpiring(LocalDate date) throws IOException {
         String plusPath = "get-medicines-without-expiring?date=" + date.getYear() + "-" + date.getMonthValue() + "-" + date.getDayOfMonth();
         Iterable<Medicamento> medicamentos = (Iterable<Medicamento>) new Gson().fromJson(requestModule.GETRequest(plusPath), ArrayList.class);
 
@@ -50,10 +51,10 @@ public class MedicamentoBusinessDelegate {
         return medicamentos;
     }
 
-    public List<String> getNombreMedicamentos() throws IOException{
+    public List<String> getNombreMedicamentos() throws IOException {
         Iterable<Medicamento> medicamentos = findAllMedicamentos();
         List<String> names = new ArrayList<>();
-        for(Medicamento medicamento : medicamentos)
+        for (Medicamento medicamento : medicamentos)
             names.add(medicamento.getNombre());
         return names;
     }

@@ -3,7 +3,6 @@ package com.icesi.webapp.business_delegates;
 import com.google.gson.Gson;
 import com.icesi.webapp.model.Usuario;
 import com.icesi.webapp.model.UsuarioPrincipal;
-import com.icesi.webapp.repositories.UsuarioRepository;
 import com.icesi.webapp.request.RequestModule;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
